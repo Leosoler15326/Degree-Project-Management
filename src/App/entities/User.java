@@ -5,28 +5,18 @@ package App.entities;
  * @author juans
  */
 public class User {
-   protected int id;
    protected String name;
    protected String lastName;
    protected String email;
    protected String password;
    protected String phone;
 
-    public User(int id, String name, String lastName, String email, String password, String phone) {
-        this.id = id;
+    public User(String name, String lastName, String email, String password, String phone) {
         this.name = name;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.phone = phone;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
