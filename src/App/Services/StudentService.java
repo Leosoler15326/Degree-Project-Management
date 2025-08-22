@@ -3,11 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package App.Services;
-
 /**
  *
  * @author juans
  */
 public class StudentService {
-    
+   
 }
