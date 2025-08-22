@@ -5,19 +5,28 @@ package App.entities;
  * @author juans
  */
 public class User {
+   protected int id;
    protected String name;
-   /** @pdOid dc9a7e8c-84aa-4f5e-b44d-14dfdea71fe7 */
    protected String lastName;
-   /** @pdOid 6d0b52b1-5713-487b-ad43-2ccc92018ef7 */
    protected String email;
-   /** @pdOid cc787832-db58-4419-888f-e852a932b9d4 */
    protected String password;
+   protected String phone;
 
-    public User(String name, String lastName, String email, String password) {
+    public User(int id, String name, String lastName, String email, String password, String phone) {
+        this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.phone = phone;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -52,5 +61,17 @@ public class User {
         this.password = password;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+ 
+
    
+
+    
 }

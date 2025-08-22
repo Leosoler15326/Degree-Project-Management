@@ -6,7 +6,8 @@ import java.util.List;
  * @author juans
  */
 public interface IRepository<T>{
-    boolean Save(T Data);
     List<T> List();
-    
+    boolean Add(T prmItem);
+    boolean Delete(T prmItem);
+    T Retrieve (String prmId);
 }

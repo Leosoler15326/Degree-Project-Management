@@ -1,10 +1,8 @@
 package App.interfaces;
 
-/**
- *
- * @author Alexp
- */
+import java.sql.Connection;
+
 public interface IDataBaseConnection {
-    boolean Connect();
-    boolean Disconnect();
+    Connection Connect();
+    void Disconnect(Connection prmConnection);
 }

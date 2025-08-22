@@ -1,25 +1,18 @@
 package App.entities;
 
-/**
- *
- * @author juans
- */
-public class Student extends User{
-    private EnumPrograms _program;
+public class Student extends User {
+    private String programa;
 
-    public Student(EnumPrograms _program, String name, String lastName, String email, String password) {
-        super(name, lastName, email, password);
-        this._program = _program;
+    public Student(String programa, int id, String name, String lastName, String email, String password, String phone) {
+        super(id, name, lastName, email, password, phone);
+        this.programa = programa;
     }
-
     
-    public EnumPrograms getProgram() {
-        return _program;
+    public String getPrograma() {
+        return programa;
     }
 
-    public void setProgram(EnumPrograms _program) {
-        this._program = _program;
+    public void setPrograma(String programa) {
+        this.programa = programa;
     }
-
-    
 }
