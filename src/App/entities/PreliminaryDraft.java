@@ -13,24 +13,24 @@ import java.util.Date;
 public class PreliminaryDraft {
     
     private int id;
-    private int id_student;
-    private int id_profesor;
+    private int idStudent;
+    private int idProfessor;
     private String name;
     private Date date;
     private String status;
 
-    public PreliminaryDraft(int id, int id_student, int id_profesor, String name, Date date, String status) {
-        this.id = id;
-        this.id_student = id_student;
-        this.id_profesor = id_profesor;
-        this.name = name;
-        this.date = date;
-        this.status = status;
-    }
+    public PreliminaryDraft(int id, int idStudent, int idProfessor, 
+                       String name, Date date, String status) {
+    this.id = id;
+    this.idStudent = idStudent;
+    this.idProfessor = idProfessor;
+    this.name = name;
+    this.date = date;
+    this.status = status;
+}
 
     public PreliminaryDraft() {
     }
-    
 
     public int getId() {
         return id;
@@ -40,20 +40,20 @@ public class PreliminaryDraft {
         this.id = id;
     }
 
-    public int getId_student() {
-        return id_student;
+    public int getIdStudent() {
+        return idStudent;
     }
 
-    public void setId_student(int id_student) {
-        this.id_student = id_student;
+    public void setIdStudent(int idStudent) {
+        this.idStudent = idStudent;
     }
 
-    public int getId_profesor() {
-        return id_profesor;
+    public int getIdProfessor() {
+        return idProfessor;
     }
 
-    public void setId_profesor(int id_profesor) {
-        this.id_profesor = id_profesor;
+    public void setIdProfessor(int idProfessor) {
+        this.idProfessor = idProfessor;
     }
 
     public String getName() {
@@ -80,6 +80,15 @@ public class PreliminaryDraft {
         this.status = status;
     }
     
-    
-    
+    @Override
+    public String toString() {
+        return "PreliminaryDraft{" +
+               "id=" + id +
+               ", name='" + name + '\'' +
+               ", status='" + status + '\'' +
+               ", date=" + date +
+               ", idStudent=" + idStudent +
+               ", idProfessor=" + idProfessor +
+               '}';
+    }
 }

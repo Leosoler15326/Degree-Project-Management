@@ -3,23 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/juans/Desktop/Repositorio/Degree-Project-Management/src/App/Repositories/ProfessorRepository.java</file>
             <file>file:/C:/Users/juans/Desktop/Repositorio/Degree-Project-Management/src/App/Main/Main.java</file>
-            <file>file:/C:/Users/juans/Desktop/Repositorio/Degree-Project-Management/src/App/Views/LoginView.java</file>
-            <file>file:/C:/Users/juans/Desktop/Repositorio/Degree-Project-Management/src/App/Views/ProfessorMenuView.java</file>
-            <file>file:/C:/Users/juans/Desktop/Repositorio/Degree-Project-Management/src/App/DataBase/DataBase.java</file>
-            <file>file:/C:/Users/juans/Desktop/Repositorio/Degree-Project-Management/src/App/Controllers/AccountController.java</file>
-            <file>file:/C:/Users/juans/Desktop/Repositorio/Degree-Project-Management/src/App/Controllers/ProfessorController.java</file>
-            <file>file:/C:/Users/juans/Desktop/Repositorio/Degree-Project-Management/src/App/Controllers/StudentController.java</file>
-            <file>file:/C:/Users/juans/Desktop/Repositorio/Degree-Project-Management/src/App/Repositories/Repository.java</file>
-            <file>file:/C:/Users/juans/Desktop/Repositorio/Degree-Project-Management/src/App/Repositories/StudentRepository.java</file>
-            <file>file:/C:/Users/juans/Desktop/Repositorio/Degree-Project-Management/src/App/Interfaces/IRepository.java</file>
-            <file>file:/C:/Users/juans/Desktop/Repositorio/Degree-Project-Management/src/App/Entities/Student.java</file>
-            <file>file:/C:/Users/juans/Desktop/Repositorio/Degree-Project-Management/src/App/Entities/User.java</file>
-            <file>file:/C:/Users/juans/Desktop/Repositorio/Degree-Project-Management/src/App/Entities/EnumStates.java</file>
-            <file>file:/C:/Users/juans/Desktop/Repositorio/Degree-Project-Management/src/App/Entities/EnumPrograms.java</file>
-            <file>file:/C:/Users/juans/Desktop/Repositorio/Degree-Project-Management/src/App/Entities/Thesis.java</file>
             <file>file:/C:/Users/juans/Desktop/Repositorio/Degree-Project-Management/src/App/Entities/PreliminaryDraft.java</file>
-            <file>file:/C:/Users/juans/Desktop/Repositorio/Degree-Project-Management/src/App/Entities/Professor.java</file>
         </group>
     </open-files>
 </project-private>

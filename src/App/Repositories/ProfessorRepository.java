@@ -1,13 +1,12 @@
 package App.Repositories;
 
 import App.DataBase.DataBase;
-import App.entities.Student;
-import App.interfaces.IRepository;
-import java.sql.*;
+import App.Entities.PreliminaryDraft;
 import java.util.ArrayList;
+import java.sql.*;
 import java.util.List;
 
-public class ProfessorRepository implements IRepository<Student> {
+public class ProfessorRepository{
     
     private DataBase _DataBase;
 
@@ -17,25 +16,39 @@ public class ProfessorRepository implements IRepository<Student> {
     public ProfessorRepository() {
     }
 
-    @Override
-    public List<Student> List() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<PreliminaryDraft> getAllPreliminaryDrafts(int prmIdProfessor) {
+        List<PreliminaryDraft> drafts = new ArrayList<>();
+        String sql = "SELECT id, status, date, name, id_student, id_professor " +
+                     "FROM Anteproyecto " +
+                     "WHERE id_professor = ?";
+
+        try (Connection conn = _DataBase.Connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setInt(1, prmIdProfessor);
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                PreliminaryDraft draft = new PreliminaryDraft(
+                    rs.getInt("id"),
+                    rs.getInt("id_student"),
+                    rs.getInt("id_professor"),
+                    rs.getString("name"),
+                    rs.getDate("date"),
+                    rs.getString("status")
+                );
+                drafts.add(draft);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al obtener anteproyectos: " + e.getMessage());
+        }
+
+        return drafts;
     }
 
-    @Override
-    public boolean Add(Student prmItem) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void SetStatusPreliminaryDraft(String prmStatus, int prmPreliminaryId){
+        
     }
-
-    @Override
-    public boolean Delete(Student prmItem) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public Student Retrieve(String prmId) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
     
 }

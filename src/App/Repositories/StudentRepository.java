@@ -2,19 +2,16 @@ package App.repositories;
 
 import App.DataBase.DataBase;
 import App.entities.Student;
-import App.interfaces.IRepository;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentRepository implements IRepository<Student> {
+public class StudentRepository {
     private DataBase _DataBase;
     public StudentRepository(DataBase db) {
         this._DataBase = db;
     }
 
-
-    @Override
 public List<Student> List() {
     List<Student> students = new ArrayList<>();
     String sql = "SELECT id, name, last_name, email, password, phone, program FROM Estudiante";
@@ -43,9 +40,7 @@ public List<Student> List() {
     return students;
 }
 
-
-        @Override
-    public boolean Add(Student prmItem) {
+public boolean Add(Student prmItem) {
         String sql = "INSERT INTO Estudiante(id, name, last_name, email, password, phone, program) VALUES(?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = _DataBase.Connect();
@@ -66,18 +61,15 @@ public List<Student> List() {
         }
     }
 
+public boolean Delete(Student prmItem) {
+    throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+}
 
-    @Override
-    public boolean Delete(Student prmItem) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+public Student Retrieve(String prmEmail) {
+    String sql = "SELECT id, name, last_name, email, password, phone, program FROM Estudiante WHERE email = ?";
+    Student s = null;
 
-    @Override
-    public Student Retrieve(String prmEmail) {
-        String sql = "SELECT id, name, last_name, email, password, phone, program FROM Estudiante WHERE email = ?";
-        Student s = null;
-
-        try (Connection conn = _DataBase.Connect();
+     try (Connection conn = _DataBase.Connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, prmEmail);
@@ -102,5 +94,4 @@ public List<Student> List() {
         return s;
     }
 
-    
 }
