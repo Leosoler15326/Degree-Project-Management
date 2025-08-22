@@ -4,7 +4,9 @@
  */
 package App.Services;
 
-import App.entities.User;
+import App.DataBase.DataBase;
+import App.entities.Student;
+import App.repositories.StudentRepository;
 
 /**
  *
@@ -16,6 +18,10 @@ public class UserService {
         instance.isValidEmail(email);
         instance.isValidPassword(password);
         instance.isValidTelephone(password);
+        DataBase db = new DataBase();
+        Student student = new Student(program, name, lastName, email, password, PhoneNumber);
+        StudentRepository studentrepo = new StudentRepository(db);
+        studentrepo.Add(student);
         
     }
 }

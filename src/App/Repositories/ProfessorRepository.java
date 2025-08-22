@@ -16,25 +16,25 @@ public class ProfessorRepository{
     public ProfessorRepository() {
     }
 
-    public List<PreliminaryDraft> getAllPreliminaryDrafts(int prmIdProfessor) {
+    public List<PreliminaryDraft> getAllPreliminaryDrafts(String prmEmailProfessor) {
         List<PreliminaryDraft> drafts = new ArrayList<>();
-        String sql = "SELECT id, status, date, name, id_student, id_professor " +
+        String sql = "SELECT id, status, date, name, email_student, email_professor " +
                      "FROM Anteproyecto " +
-                     "WHERE id_professor = ?";
+                     "WHERE email_professor = ?";
 
         try (Connection conn = _DataBase.Connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             
-            pstmt.setInt(1, prmIdProfessor);
+            pstmt.setString(1, prmEmailProfessor);
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
                 PreliminaryDraft draft = new PreliminaryDraft(
                     rs.getInt("id"),
-                    rs.getInt("id_student"),
-                    rs.getInt("id_professor"),
+                    rs.getString("email_student"),
+                    rs.getString("email_professor"),
                     rs.getString("name"),
-                    rs.getDate("date"),
+                    rs.getString("date"),
                     rs.getString("status")
                 );
                 drafts.add(draft);
@@ -47,8 +47,28 @@ public class ProfessorRepository{
         return drafts;
     }
 
-    public void SetStatusPreliminaryDraft(String prmStatus, int prmPreliminaryId){
-        
+    public boolean SetStatusPreliminaryDraft(String prmStatus, int prmPreliminaryId) {
+    String sql = "UPDATE Anteproyecto SET status = ? WHERE id = ?";
+        try (Connection conn = _DataBase.Connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, prmStatus);
+            pstmt.setInt(2, prmPreliminaryId);
+
+            int rowsAffected = pstmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("Estado actualizado exitosamente para anteproyecto ID: " + prmPreliminaryId);
+                return true;
+            } else {
+                System.out.println("No se encontró el anteproyecto con ID: " + prmPreliminaryId);
+                return false;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al actualizar el estado: " + e.getMessage());
+            return false;
+        }
     }
     
 }

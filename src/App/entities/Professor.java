@@ -5,8 +5,8 @@ package App.entities;
  */
 public class Professor extends User{
 
-    public Professor(int id, String name, String lastName, String email, String password, String phone) {
-        super(id, name, lastName, email, password, phone);
+    public Professor(String name, String lastName, String email, String password, String phone) {
+        super(name, lastName, email, password, phone);
     }
 
 }

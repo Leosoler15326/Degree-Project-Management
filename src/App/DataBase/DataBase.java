@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DataBase implements IDataBaseConnection{
-    private String URL = "jdbc:sqlite:C:\\Users\\juans\\Desktop\\Repositorio\\Degree-Project-Management\\database.db";
+    private String URL = "jdbc:sqlite:database.db";
 
     public Connection Connect() {
         Connection conn = null;

@@ -13,17 +13,18 @@ import java.util.Date;
 public class PreliminaryDraft {
     
     private int id;
-    private int idStudent;
-    private int idProfessor;
+    private String email_student;
+    private String email_professor;
     private String name;
-    private Date date;
+    //No cambiar este String a Date por NADA DEL MUNDO
+    private String date;// NO CAMBIAR...
     private String status;
 
-    public PreliminaryDraft(int id, int idStudent, int idProfessor, 
-                       String name, Date date, String status) {
+    public PreliminaryDraft(int id, String emailStudent, String emailProfessor, 
+                       String name, String date, String status) {
     this.id = id;
-    this.idStudent = idStudent;
-    this.idProfessor = idProfessor;
+    this.email_student = emailStudent;
+    this.email_professor = emailProfessor;
     this.name = name;
     this.date = date;
     this.status = status;
@@ -40,20 +41,20 @@ public class PreliminaryDraft {
         this.id = id;
     }
 
-    public int getIdStudent() {
-        return idStudent;
+    public String getEmail_student() {
+        return email_student;
     }
 
-    public void setIdStudent(int idStudent) {
-        this.idStudent = idStudent;
+    public void setEmail_student(String email_student) {
+        this.email_student = email_student;
     }
 
-    public int getIdProfessor() {
-        return idProfessor;
+    public String getEmail_professor() {
+        return email_professor;
     }
 
-    public void setIdProfessor(int idProfessor) {
-        this.idProfessor = idProfessor;
+    public void setEmail_professor(String email_professor) {
+        this.email_professor = email_professor;
     }
 
     public String getName() {
@@ -63,12 +64,12 @@ public class PreliminaryDraft {
     public void setName(String name) {
         this.name = name;
     }
-
-    public Date getDate() {
+    
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -80,15 +81,4 @@ public class PreliminaryDraft {
         this.status = status;
     }
     
-    @Override
-    public String toString() {
-        return "PreliminaryDraft{" +
-               "id=" + id +
-               ", name='" + name + '\'' +
-               ", status='" + status + '\'' +
-               ", date=" + date +
-               ", idStudent=" + idStudent +
-               ", idProfessor=" + idProfessor +
-               '}';
-    }
 }
