@@ -1,13 +1,45 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package App.Services;
 
+<<<<<<< Updated upstream
 /**
  *
  * @author juans
  */
 public class ProfessorService {
     
+=======
+import App.DataBase.DataBase;
+import App.Entities.PreliminaryDraft;
+import App.Repositories.ProfessorRepository;
+import App.entities.Professor;
+import App.entities.Student;
+import App.repositories.StudentRepository;
+import java.util.List;
+
+public class ProfessorService {
+
+    private final DataBase db;
+
+    public ProfessorService(DataBase db) {
+        this.db = db;
+    }
+
+    public List<PreliminaryDraft> GetAllRepositories(String email) {
+        ProfessorRepository s = new ProfessorRepository(db);
+        return s.getAllPreliminaryDrafts(email);
+
+    }
+
+    public void RegisterProfessor(String name, String lastName, String PhoneNumber, String email, String password) throws Exception {
+        ValidatorService instance = ValidatorService.GetInstance();
+        System.out.println("Email : " + email);
+        instance.isValidEmail(email);
+        instance.isValidPassword(password);
+        //instance.isValidTelephone(password);
+        password = Encrypt.GetInstance().Encrypt(password);
+        Professor newProfessor = new Professor(name, lastName, email, password, PhoneNumber);
+        ProfessorRepository professorRepository = new ProfessorRepository(db);
+        professorRepository.Add(newProfessor);
+    }
+>>>>>>> Stashed changes
 }

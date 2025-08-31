@@ -4,6 +4,8 @@
  */
 package App.Views;
 
+import App.DataBase.AppContext;
+import App.Session.Session;
 import java.io.File;
 import javax.swing.JFileChooser;
 
@@ -20,6 +22,14 @@ public class StudentMenuView extends javax.swing.JFrame {
      */
     public StudentMenuView() {
         initComponents();
+<<<<<<< Updated upstream
+=======
+        setSize(800, 600);
+        setResizable(false);
+        setLocationRelativeTo(null);
+        
+        jLabelEmail.setText(Session.getActual().getEmail());
+>>>>>>> Stashed changes
     }
 
     /**
@@ -33,6 +43,8 @@ public class StudentMenuView extends javax.swing.JFrame {
 
         panelMenu = new javax.swing.JPanel();
         btnCerrarSesion = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabelEmail = new javax.swing.JLabel();
         panelRight = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProcesos = new javax.swing.JTable();
@@ -40,11 +52,23 @@ public class StudentMenuView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        panelMenu.setBackground(new java.awt.Color(255, 255, 255));
+        panelMenu.setBackground(new java.awt.Color(102, 102, 255));
 
         btnCerrarSesion.setBackground(new java.awt.Color(255, 102, 102));
         btnCerrarSesion.setForeground(new java.awt.Color(0, 0, 0));
         btnCerrarSesion.setText("Cerrar Sesión");
+        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarSesionActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Sesión Iniciada");
+
+        jLabelEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelEmail.setText("jLabel3");
 
         javax.swing.GroupLayout panelMenuLayout = new javax.swing.GroupLayout(panelMenu);
         panelMenu.setLayout(panelMenuLayout);
@@ -54,16 +78,26 @@ public class StudentMenuView extends javax.swing.JFrame {
                 .addContainerGap(38, Short.MAX_VALUE)
                 .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         panelMenuLayout.setVerticalGroup(
             panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelEmail)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        panelRight.setBackground(new java.awt.Color(255, 255, 255));
+        panelRight.setBackground(new java.awt.Color(102, 102, 255));
 
         tblProcesos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -150,6 +184,19 @@ public class StudentMenuView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnCrearNuevoProcesoActionPerformed
 
+    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+        System.out.println("Cerrando la sesión de :" + Session.getActual().getEmail() + " Rol: " + Session.getActual().getRol());
+        Session.closeSession();
+        LoginView loginView = new LoginView();
+        loginView.setVisible(true);
+        loginView.setLocationRelativeTo(null); // Centrar ventana
+        
+        loginView.setAccountController(AppContext.accountController);
+
+        // Cerrar la ventana actual (RegisterUserView)
+        this.dispose();
+    }//GEN-LAST:event_btnCerrarSesionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -178,6 +225,8 @@ public class StudentMenuView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnCrearNuevoProceso;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelEmail;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panelMenu;
     private javax.swing.JPanel panelRight;

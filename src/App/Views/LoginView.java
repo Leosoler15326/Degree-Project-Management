@@ -39,9 +39,13 @@ public class LoginView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         txtEmail = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JTextField();
         jLabelEmail = new javax.swing.JLabel();
         jLabelContraseña = new javax.swing.JLabel();
+<<<<<<< Updated upstream
+=======
+        jLabelError = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
+>>>>>>> Stashed changes
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -122,6 +126,7 @@ public class LoginView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< Updated upstream
                     .addComponent(jLabelContraseña)
                     .addComponent(jLabelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -130,6 +135,21 @@ public class LoginView extends javax.swing.JFrame {
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27))
+=======
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelContraseña)
+                            .addComponent(jLabelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabelError)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+>>>>>>> Stashed changes
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,9 +160,17 @@ public class LoginView extends javax.swing.JFrame {
                     .addComponent(jLabelEmail))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+<<<<<<< Updated upstream
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelContraseña))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+=======
+                    .addComponent(jLabelContraseña)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(jLabelError)
+                .addGap(24, 24, 24)
+>>>>>>> Stashed changes
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -205,7 +233,7 @@ public class LoginView extends javax.swing.JFrame {
             .addGroup(jpanelBackGroundLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -222,6 +250,59 @@ public class LoginView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< Updated upstream
+=======
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String email = txtEmail.getText();
+        String password = txtPassword.getText();
+        jLabelError.setVisible(false);
+
+        if (email.isEmpty() || password.isEmpty()) {
+            jLabelError.setText("Error: Complete todos los campos.");
+            jLabelError.setVisible(true);
+            return;
+        }
+
+        try {
+            // Verifica si las credenciales son válidas
+            _accountController.isLoginValid(email, password);
+
+            // Obtener el rol actual desde la sesión
+            String rol = Session.getActual().getRol();
+
+            // Abrir la vista correspondiente según el rol
+            if (rol.equals("Professor")) {
+                ProfessorMenuView profesorMenu = new ProfessorMenuView();
+                profesorMenu.setVisible(true);
+            } else if (rol.equals("Student")) {
+                StudentMenuView studentMenu = new StudentMenuView();
+                studentMenu.setVisible(true);
+            } else {
+                jLabelError.setText("Error: Rol desconocido.");
+                jLabelError.setVisible(true);
+                return;
+            }
+
+            // Cerrar la ventana de login actual
+            this.dispose();
+
+        } catch (Exception ex) {
+            jLabelError.setText("Error: " + ex.getMessage());
+            jLabelError.setVisible(true);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonRegisterRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegisterRequestActionPerformed
+        // TODO add your handling code here:
+        RegisterUserView windows = new RegisterUserView();
+        windows.setVisible(true);
+        windows.setLocationRelativeTo(null); // Centrar ventana
+
+        // Cerrar la ventana actual (RegisterUserView)
+        this.dispose();
+    }//GEN-LAST:event_jButtonRegisterRequestActionPerformed
+
+>>>>>>> Stashed changes
     /**
      * @param args the command line arguments
      */
@@ -261,6 +342,6 @@ public class LoginView extends javax.swing.JFrame {
     private javax.swing.JPanel jpanelTittle;
     private javax.swing.JLabel labelTittle;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
 }

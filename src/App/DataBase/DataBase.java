@@ -6,8 +6,13 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DataBase implements IDataBaseConnection{
-    private String URL = "jdbc:sqlite:database.db";
+    private final String URL = "jdbc:sqlite:C:\\Users\\juans\\Desktop\\Repositorio\\Degree-Project-Management\\database.db";
 
+<<<<<<< Updated upstream
+=======
+
+    @Override
+>>>>>>> Stashed changes
     public Connection Connect() {
         Connection conn = null;
         try {
@@ -17,6 +22,7 @@ public class DataBase implements IDataBaseConnection{
         }
         return conn;
     }
+    @Override
     public void Disconnect(Connection conn) {
     if (conn != null) {
         try {
